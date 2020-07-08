@@ -1,0 +1,21 @@
+#!/bin/bash
+
+url=$(snapctl get url)
+token=$(snapctl get token)
+
+if [ -z $url ]
+then
+    echo "No repository URL entered"
+fi
+
+if [ -z $token ]
+then
+    echo "No token entered"
+fi
+
+if [-z $url || -z $token ]
+then
+    exit 1
+fi
+
+$SNAP/bin/config.sh --url $url --token $token
